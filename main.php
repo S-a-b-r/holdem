@@ -13,6 +13,8 @@
         $arrOut = [];
         for($i = 0; $i < 10; $i++){
             $countZero = 0;
+            $arr[$i] = (int)$arr[$i];
+            $arr[$i]= (string)$arr[$i];
             for($j = 0; $j<strlen($arr[$i]);$j++){
                 if($arr[$i][$j] == "0"){
                     $countZero++;
@@ -31,19 +33,22 @@
                 echo($arrOut[$i]." ");
             }
         }
+        echo("<br><a href='index.html'>Вернуться к началу</a>");
     }
 
     function unrandomArr(){
         $n = $_GET['n'];
         if($n>100){
-            return "Кол-во элементов массива должно быть меньше 100";
+            echo("Кол-во элементов массива должно быть меньше 100");
         }
         else{
             echo('<form id="test" action="" method="POST">
+                    Введите '.$n.' элементов <br>
                     Введите элементы массива через пробел<br/>
                     <textarea name = "array" cols = "40" rows = "10"></textarea>
                     <button name = "method" value = "unrandom"> Отправить </button>
-                </form>');
+                </form>'
+            );
             try{
                 $arr = explode(" ", $_POST['array']);
                 echo("Входной массив:");
@@ -54,6 +59,8 @@
                 $arrOut = [];
                 for($i = 0; $i < $n; $i++){
                     $countZero = 0;
+                    $arr[$i] = (int)$arr[$i];
+                    $arr[$i]= (string)$arr[$i];
                     for($j = 0; $j<strlen($arr[$i]);$j++){
                         if($arr[$i][$j] == "0"){
                             $countZero++;
@@ -72,6 +79,7 @@
                         echo($arrOut[$i]." ");
                     }
                 }
+                echo("<br><a href='index.html'>Вернуться к началу</a>");
             }
             catch(Exception $e){
                 echo("Не удалось разбить строку на элементы");
