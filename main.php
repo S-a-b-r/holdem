@@ -10,28 +10,22 @@
             echo ($arr[$i]." ");
         }
         echo("<br>");
-        $arrOut = [];
-        for($i = 0; $i < 10; $i++){
-            $countZero = 0;
-            $arr[$i] = (int)$arr[$i];
-            $arr[$i]= (string)$arr[$i];
-            for($j = 0; $j<strlen($arr[$i]);$j++){
-                if($arr[$i][$j] == "0"){
-                    $countZero++;
-                }
+        $k = 0;
+        for($i = 0; $i < 5; $i++){
+            if($arr[$i]==$arr[9-$i]){
+                //
             }
-            if($countZero == 2){
-                $arrOut[] = $i;
+            else{
+                $k++;
+                $j = $i;
             }
         }
         echo("Выходной массив:");
-        if($arrOut ==[]){
-            echo("Таких чисел нет");
+        if($j && $k< 2){
+            echo("Нужно заменить ".$arr[$j]." . Который находится на ".$j." месте");
         }
         else{
-            for($i = 0; $i < count($arrOut);$i++){
-                echo($arr[$arrOut[$i]]." ");
-            }
+            echo("НЕЛЬЗЯ");
         }
         echo("<br><a href='index.html'>Вернуться к началу</a>");
     }
@@ -51,28 +45,23 @@
                 echo ($arr[$i]." ");
             }
             echo("<br>");
-            $arrOut = [];
-            for($i = 0; $i < $n; $i++){
-                $countZero = 0;
-                $arr[$i] = (int)$arr[$i];
-                $arr[$i]= (string)$arr[$i];
-                for($j = 0; $j<strlen($arr[$i]);$j++){
-                    if($arr[$i][$j] == "0"){
-                        $countZero++;
-                    }
+            $k = 0;
+            for($i = 0; $i < $n / 2; $i++){
+                if($arr[$i]==$arr[$n-$i-1]){
+                    //Пропускаем итерацию
                 }
-                if($countZero == 2){
-                    $arrOut[] = $i;
+                else{
+                    $k++;
+                    $j = $i;
+                    $move = $arr[$n-$i-1];
                 }
             }
             echo("Выходной массив:");
-            if($arrOut ==[]){
-                echo("Таких чисел нет");
+            if($k < 2){
+                echo("Нужно заменить ".$arr[$j]." . Который находится на ".($j+1)." месте. На ".$move);
             }
             else{
-                for($i = 0; $i < count($arrOut);$i++){
-                    echo($arr[$arrOut[$i]]." ");
-                }
+                echo("НЕЛЬЗЯ");
             }
             echo("<br><a href='index.html'>Вернуться к началу</a>");
         }
